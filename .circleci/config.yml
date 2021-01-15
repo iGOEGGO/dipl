@@ -22,6 +22,9 @@ jobs:
       - run:
           name: load functions
           command: R -e "devtools::load_all()"
+      - run: |
+          cd ..
+          R -e "devtools::install(\"dipl\")"
 
 # Orchestrate our job run sequence
 workflows:
