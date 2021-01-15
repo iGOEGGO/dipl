@@ -6,6 +6,27 @@ jobs:
     steps:
       - checkout
       - run: R --version
-      - run: |
-          R CMD build . 
+      - run:
+          name: Build package
+          command: R CMD build .
+      - run:
+          name: Check package
+          command: R CMD check *tar.gz
+  
+  test: 
+    docker:
+        - image: rocker/verse:3.5.3
+      steps:
+        - checkout
+        - run: R --version
+        - run:
+            name: load functions
+            command: R -e "devtools::load_all()"
+
+# Orchestrate our job run sequence
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test
  
