@@ -21,3 +21,13 @@ devtools::load_all()
 ```
 
 Damit werden die entsprechenden Funktionen des Packages so lange zur Verfügung gestellt, bis man die R-Session beendet. 
+
+
+
+## Testing
+
+### Build-in-functions
+
+Das erste, dass beim Testing passiert ist, dass das Package mit der build-in-function `check` von [R](https://www.rdocumentation.org/packages/devtools/versions/2.3.2/topics/check) überprüft wird. 
+
+Ist dieser Schritt erfolgreich werden das Installieren sowie die einzelnen Funktionalitäten des Packages getestet. 
