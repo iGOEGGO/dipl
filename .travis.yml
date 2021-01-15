@@ -1,6 +1,4 @@
 language: r
-r_packages:
-  - devtools
-  - roxygen2
 script:
-- devtools::load_all()
+- R CMD build .
+- R CMD check *tar.gz
