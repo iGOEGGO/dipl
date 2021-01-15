@@ -7,6 +7,6 @@ jobs:
       - checkout
       - run: R --version
       - run: |
-          R -e "install.packages("devtools")"
+          R -e "install.packages(\"devtools\")"
           R -e "install.packages("roxygen2")"
  
