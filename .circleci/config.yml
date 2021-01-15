@@ -7,8 +7,5 @@ jobs:
       - checkout
       - run: R --version
       - run: |
-          R 
-          devtools::load_all()
-          devtools::install()
-          library("dipl")
+          R CMD build . 
  
