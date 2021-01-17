@@ -1,4 +1,5 @@
 #' "echte" Faktorvariablen auslassen und restliche in Strings umwandeln
+#' @param x entsprechender Datensatz
 #' @export
 resetFactors <- function(x) {
   dframe = x
@@ -15,6 +16,7 @@ resetFactors <- function(x) {
 }
 
 #' Datum konvertieren
+#' @param x entsprechender Datensatz
 #' @export
 convertDate <- function(x) {
   dframe = x
@@ -47,6 +49,7 @@ convertDate <- function(x) {
 }
 
 #' Uhrzeit konvertieren
+#' @param x entsprechender Datensatz
 #' @export
 convertTime <- function(x) {
   dframe = x
@@ -79,6 +82,7 @@ convertTime <- function(x) {
 }
 
 #' Datum + Uhrzeit konvertieren
+#' @param x entsprechender Datensatz
 #' @export
 convertDateAndTime <- function(x) {
   dframe = x
@@ -111,6 +115,7 @@ convertDateAndTime <- function(x) {
 }
 
 #' NAs auffüllen
+#' @param x entsprechender Datensatz
 #' @export
 fillNAs <- function(x) {
   dframe = x
@@ -129,6 +134,7 @@ fillNAs <- function(x) {
 }
 
 #' Nur NA-Spalten loeschen
+#' @param x entsprechender Datensatz
 #' @export
 removeNAColumns <- function(x) {
   dframe = x
@@ -157,6 +163,7 @@ removeNAColumns <- function(x) {
 
 #' Spalten mit "echten" Strings aussortieren
 #' Damit keine Notizen etc fälschlicherweise als String-Variablen aufgenommen werden (eig sind Strings nur als Factors brauchbar)
+#' @param x entsprechender Datensatz
 #' @export
 filterStrings <- function(x) {
   dframe = x
