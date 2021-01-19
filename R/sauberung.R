@@ -68,9 +68,13 @@ convertTime <- function(x) {
           }
         }
       }
+      #library('chron')
+      library(hms)
+      #time = paste0(as.character(dframe[,i]),":00",sep = '')
       if (isTime) {
-        library('chron')
-        dframe[,i] <- chron(times=(paste0(as.character(dframe[,i]),":00")))
+        #dframe[,i] <- chron(time)
+        dframe[,i] <- parse_hm(dframe[,i])
+        print(typeof(dframe[,i]))
         print(paste0(names[i], " wurde in Uhrzeit umgewandelt"))
       } else {
         print(paste0(names[i], " ist keine Uhrzeit"))
