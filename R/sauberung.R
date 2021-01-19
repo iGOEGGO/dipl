@@ -70,7 +70,7 @@ convertTime <- function(x) {
       }
       if (isTime) {
         library('hms')
-        dframe[,i] <- as_hms(paste0(as.character(dframe[,i]),":00"))
+        dframe[,i] <- chron(times=(paste0(as.character(dframe[,i]),":00")))
         print(paste0(names[i], " wurde in Uhrzeit umgewandelt"))
       } else {
         print(paste0(names[i], " ist keine Uhrzeit"))
