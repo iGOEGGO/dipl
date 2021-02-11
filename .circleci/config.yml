@@ -19,6 +19,7 @@ jobs:
     steps:
       - checkout
       - run: R --version
+      - run: R -e 'install.packages("hms")'
       - run:
           name: load functions
           command: R -e "devtools::load_all()"
