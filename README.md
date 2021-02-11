@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/iGOEGGO/diplomprojekt.svg?token=sHpQspLqymz32HoPUpxz&branch=master)](https://travis-ci.com/iGOEGGO/diplomprojekt)
+[![Build Status](https://travis-ci.com/iGOEGGO/dipl.svg?branch=main)](https://travis-ci.com/iGOEGGO/dipl)
 [![CircleCI](https://circleci.com/gh/iGOEGGO/dipl.svg?style=svg&circle-token=83b18c34b6f365dc697f4549d8b7ef07b51f54ce)](https://app.circleci.com/pipelines/github/iGOEGGO/dipl)
 
 

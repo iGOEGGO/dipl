@@ -37,8 +37,9 @@ convertDate <- function(x) {
       }
       #print(isDate)
       if (isDate) {
-        dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y")
-        print(paste0(names[i], " wurde in Datum umgewandelt"))
+        # dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y")
+        # Timezone is very important!!
+        dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y", tz="Europe/Vienna")
       } else {
         print(paste0(names[i], " ist kein Datum"))
       }
@@ -107,7 +108,8 @@ convertDateAndTime <- function(x) {
       }
       #print(isDate)
       if (isDateTime) {
-        dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y %H:%M")
+        # Timezone is very important!!
+        dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y %H:%M", tz="Europe/Vienna")
         print(paste0(names[i], " wurde in Datum und Uhrzeit umgewandelt"))
       } else {
         print(paste0(names[i], " ist kein Datum + Uhrzeit"))
