@@ -25,6 +25,7 @@ jobs:
       - run: |
           # cd ..
           # ls
+          # Testen
           R -e "devtools::test()"
 
 # Orchestrate our job run sequence
