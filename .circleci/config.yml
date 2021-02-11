@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: rocker/verse:3.5.3
+      - image: thomaschln/r-devtools
     steps:
       - checkout
       - run: R --version
@@ -15,7 +15,7 @@ jobs:
   
   test: 
     docker:
-        - image: rocker/verse:3.5.3
+        - image: thomaschln/r-devtools
     steps:
       - checkout
       - run: R --version
@@ -23,9 +23,9 @@ jobs:
           name: load functions
           command: R -e "devtools::load_all()"
       - run: |
-          cd ..
-          ls
-          # R -e "devtools::install(\"dipl\")"
+          # cd ..
+          # ls
+          R -e "devtools::test()"
 
 # Orchestrate our job run sequence
 workflows:
