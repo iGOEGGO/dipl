@@ -1,4 +1,5 @@
 language: r
+cache: packages
 script:
 - R -e 'install.packages("hms")'
 - R -e 'install.packages("devtools")'
