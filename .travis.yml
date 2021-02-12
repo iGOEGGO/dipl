@@ -5,4 +5,5 @@ script:
 - R -e 'install.packages("devtools")'
 - R CMD build .
 - R CMD check *tar.gz
+- R --version
 - R -e "devtools::test()"
