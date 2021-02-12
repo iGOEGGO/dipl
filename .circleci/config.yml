@@ -11,7 +11,9 @@ jobs:
           command: R CMD build .
       - run:
           name: Check package
-          command: R CMD check *tar.gz
+          command: |
+              ls
+              # R CMD check *tar.gz
   
   test: 
     docker:
