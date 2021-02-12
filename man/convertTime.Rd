@@ -6,6 +6,9 @@
 \usage{
 convertTime(x)
 }
+\arguments{
+\item{x}{entsprechender Datensatz}
+}
 \description{
 Uhrzeit konvertieren
 }

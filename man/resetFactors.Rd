@@ -6,6 +6,9 @@
 \usage{
 resetFactors(x)
 }
+\arguments{
+\item{x}{entsprechender Datensatz}
+}
 \description{
 "echte" Faktorvariablen auslassen und restliche in Strings umwandeln
 }

@@ -6,6 +6,9 @@
 \usage{
 convertDateAndTime(x)
 }
+\arguments{
+\item{x}{entsprechender Datensatz}
+}
 \description{
 Datum + Uhrzeit konvertieren
 }

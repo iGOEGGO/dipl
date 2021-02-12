@@ -6,6 +6,9 @@
 \usage{
 convertDate(x)
 }
+\arguments{
+\item{x}{entsprechender Datensatz}
+}
 \description{
 Datum konvertieren
 }

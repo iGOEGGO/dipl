@@ -6,6 +6,9 @@
 \usage{
 fillNAs(x)
 }
+\arguments{
+\item{x}{entsprechender Datensatz}
+}
 \description{
 NAs auffüllen
 }

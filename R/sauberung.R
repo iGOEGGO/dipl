@@ -168,7 +168,7 @@ removeNAColumns <- function(x) {
 }
 
 #' Spalten mit "echten" Strings aussortieren
-#' Damit keine Notizen etc fälschlicherweise als String-Variablen aufgenommen werden (eig sind Strings nur als Factors brauchbar)
+#' @description Damit keine Notizen etc fälschlicherweise als String-Variablen aufgenommen werden (eig sind Strings nur als Factors brauchbar)
 #' @param x entsprechender Datensatz
 #' @export
 filterStrings <- function(x) {

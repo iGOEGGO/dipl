@@ -6,6 +6,9 @@
 \usage{
 removeNAColumns(x)
 }
+\arguments{
+\item{x}{entsprechender Datensatz}
+}
 \description{
 Nur NA-Spalten loeschen
 }

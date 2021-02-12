@@ -2,12 +2,13 @@
 % Please edit documentation in R/sauberung.R
 \name{filterStrings}
 \alias{filterStrings}
-\title{Spalten mit "echten" Strings aussortieren
-Damit keine Notizen etc fälschlicherweise als String-Variablen aufgenommen werden (eig sind Strings nur als Factors brauchbar)}
+\title{Spalten mit "echten" Strings aussortieren}
 \usage{
 filterStrings(x)
 }
+\arguments{
+\item{x}{entsprechender Datensatz}
+}
 \description{
-Spalten mit "echten" Strings aussortieren
 Damit keine Notizen etc fälschlicherweise als String-Variablen aufgenommen werden (eig sind Strings nur als Factors brauchbar)
 }
