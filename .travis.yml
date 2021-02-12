@@ -1,7 +1,7 @@
 language: r
 script:
 - R -e 'install.packages("hms")'
+- R -e 'install.packages("devtools")'
 - R CMD build .
 - R CMD check *tar.gz
-- R -e 'install.packages("devtools")'
 - R -e "devtools::test()"
