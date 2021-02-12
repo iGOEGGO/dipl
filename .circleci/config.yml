@@ -6,7 +6,6 @@ jobs:
     steps:
       - checkout
       - run: R --version
-      - run:
       - run: R -e 'install.packages("hms")'
           name: Build package
           command: R CMD build .
