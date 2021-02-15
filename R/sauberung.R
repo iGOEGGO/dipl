@@ -19,6 +19,7 @@ resetFactors <- function(x) {
 #' @param x entsprechender Datensatz
 #' @export
 convertDate <- function(x) {
+  x[x==""]<-NA
   dframe = x
   names <- names(dframe)
   for(i in 1:ncol(dframe)) {
