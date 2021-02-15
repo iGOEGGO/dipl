@@ -25,16 +25,22 @@ convertDate <- function(x) {
     if (typeof(dframe[,i])=="character") {
       isDate <- TRUE
       for (j in dframe[,i]) {
+        if(is.na(j)) {
+          next
+        }
         if((nchar(j)<8&&nchar(j)<10)&&nchar(j)>0) {
           isDate <- FALSE
         } else if(nchar(j)==10 || nchar(j)==8) {
           regexausdruck <- '^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$'
           dateReg1 <- grepl(regexausdruck, j)
-          print(dateReg1)
+          #print(dateReg1)
           dateReg2 <- grepl("^\\d{4}(\\/|-|\\.)(0?[1-9]|1[012])(\\/|-|\\.)(0?[1-9]|[12][0-9]|3[01])$", j)
-          print(dateReg2)
+          # dateReg3 <- grepl("^((0?[13578]|10|12)(-|\\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\\/)((19)([2-9])(\\d{1})|(20)([01])(\\d{1})|([8901])(\\d{1}))|(0?[2469]|11)(-|\\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\\/)((19)([2-9])(\\d{1})|(20)([01])(\\d{1})|([8901])(\\d{1})))$",j)
+          print(j)
+          dateReg3 <- grepl("(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d",j)
+          print(dateReg3)
           #print(dateReg)
-          if(!dateReg1 && !dateReg2) {
+          if(!dateReg1 && !dateReg2 && !dateReg3) {
             isDate <- FALSE
           }
         }
@@ -43,17 +49,25 @@ convertDate <- function(x) {
       if (isDate) {
         # dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y")
         # Timezone is very important!!
+        print("hier")
         if (dateReg1) {
+          print("hier2")
           dframe[,i] <- as.POSIXct(dframe[,i],
                                    tryFormats = c("%d.%m.%Y",
                                                   "%d-%m-%Y",
                                                   "%d/%m/%Y"),
                                    tz="Europe/Vienna")
-        } else {
+        } else if(dateReg2) {
           dframe[,i] <- as.POSIXct(dframe[,i],
                                    tryFormats = c("%Y.%m.%d",
                                                   "%Y-%m-%d",
                                                   "%Y/%m/%d"),
+                                   tz="Europe/Vienna")
+        } else {
+          dframe[,i] <- as.POSIXct(dframe[,i],
+                                   tryFormats = c("%m.%d.%Y",
+                                                  "%m-%d-%Y",
+                                                  "%m/%d/%Y"),
                                    tz="Europe/Vienna")
         }
       } else {
