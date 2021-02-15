@@ -90,6 +90,9 @@ convertTime <- function(x) {
     if (typeof(dframe[,i])=="character") {
       isTime <- TRUE
       for (j in dframe[,i]) {
+        if(is.na(j)) {
+          next
+        }
         if(nchar(j)!=5&&nchar(j)>0) {
           isTime <- FALSE
         } else if(nchar(j)==10) {
@@ -127,6 +130,9 @@ convertDateAndTime <- function(x) {
     if (typeof(dframe[,i])=="character") {
       isDateTime <- TRUE
       for (j in dframe[,i]) {
+        if(is.na(j)) {
+          next
+        }
         if(nchar(j)!=16&&nchar(j)>0) {
           isDateTime <- FALSE
         } else if(nchar(j)==16) {
@@ -160,6 +166,9 @@ fillNAs <- function(x) {
   for (i in 1:ncol(dframe)) {
     if (typeof(dframe[,i])=="character") {
       for (j in 1:nrow(dframe)) {
+        if(is.na(j)) {
+          next
+        }
         if(nchar(dframe[,i][j])==0) {
           #print("leeres String-Feld")
           dframe[,i][j] = NA
