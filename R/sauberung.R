@@ -161,21 +161,23 @@ convertDateAndTime <- function(x) {
 #' @param x entsprechender Datensatz
 #' @export
 fillNAs <- function(x) {
+  x[x==""]<-NA
   dframe = x
-  names <- names(dframe)
-  for (i in 1:ncol(dframe)) {
-    if (typeof(dframe[,i])=="character") {
-      for (j in 1:nrow(dframe)) {
-        if(is.na(j)) {
-          next
-        }
-        if(nchar(dframe[,i][j])==0) {
-          #print("leeres String-Feld")
-          dframe[,i][j] = NA
-        }
-      }
-    }
-  }
+  #dframe = x
+  #names <- names(dframe)
+  #for (i in 1:ncol(dframe)) {
+  #  if (typeof(dframe[,i])=="character") {
+  #    for (j in 1:nrow(dframe)) {
+  #      if(is.na(j)) {
+  #        next
+  #      }
+  #      if(nchar(dframe[,i][j])==0) {
+  #        #print("leeres String-Feld")
+  #        dframe[,i][j] = NA
+  #      }
+  #    }
+  #  }
+  #}
   dframe
 }
 
