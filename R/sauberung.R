@@ -29,7 +29,9 @@ convertDate <- function(x) {
         if(is.na(j)) {
           next
         }
-        if((nchar(j)<8&&nchar(j)<10)&&nchar(j)>0) {
+        if((nchar(j)<8&&nchar(j)<10)||nchar(j)>10) {
+          # print("ist falsch")
+          # print(names[i])
           isDate <- FALSE
         } else if(nchar(j)==10 || nchar(j)==8) {
           regexausdruck <- '^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$'
@@ -50,9 +52,10 @@ convertDate <- function(x) {
       if (isDate) {
         # dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y")
         # Timezone is very important!!
-        print("hier")
+        #print("hier")
+        #print(names[i])
         if (dateReg1) {
-          print("hier2")
+          #print("hier2")
           dframe[,i] <- as.POSIXct(dframe[,i],
                                    tryFormats = c("%d.%m.%Y",
                                                   "%d-%m-%Y",
