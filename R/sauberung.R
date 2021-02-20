@@ -237,7 +237,9 @@ filterStrings <- function(x) {
       differentValues <- length(elements)
       print(actualFiels)
       print(paste0(names[i], " - Verschiedene Werte: ", differentValues))
-      drop <- c(drop,names[i])
+      if (differentValues > 10) {
+        drop <- c(drop,names[i])
+      }
       # Hier eine Unterscheidung verwenden oder nicht?? -> eventuell wichtige Variablen
       #print(elements)
     }
