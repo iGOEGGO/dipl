@@ -234,10 +234,14 @@ filterStrings <- function(x) {
       }
       NAs <- sapply(dframe[i], function(x) sum(is.na(x)))
       actualFiels <- nrow(dframe)-NAs
-      differentValues <- length(elements)
+      # print(elements)
+      elements <- elements[!is.na(elements)]
+      elements <- elements[elements!=""]
+      differentValues <- length(elements[!is.na(elements)])
       print(actualFiels)
       print(paste0(names[i], " - Verschiedene Werte: ", differentValues))
-      if (differentValues > 10) {
+      if (differentValues > 10 || differentValues < 2) {
+        print(i)
         drop <- c(drop,names[i])
       }
       # Hier eine Unterscheidung verwenden oder nicht?? -> eventuell wichtige Variablen
@@ -246,6 +250,7 @@ filterStrings <- function(x) {
   }
 
   dframe <- dframe[,!(names(dframe) %in% drop)]
+  dframe <- as.data.frame(unclass(dframe))
   print(ncol(dframe))
 
   dframe
