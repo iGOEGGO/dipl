@@ -60,7 +60,7 @@ checkDate <- function(x) {
 #' Datum konvertieren
 #' @param x entsprechender Datensatz
 #' @export
-convertDate <- function(x) {
+convertDate <- function(x, dateformat) {
   x[x==""]<-NA
   dframe = x
   names <- names(dframe)
