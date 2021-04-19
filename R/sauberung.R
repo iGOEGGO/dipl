@@ -178,12 +178,14 @@ convertDateAndTime <- function(x) {
         if(is.na(j)) {
           next
         }
-        if(nchar(j)!=16&&nchar(j)>0) {
+        if((nchar(j)<16&&nchar(j)<19)||nchar(j)>19) {
           isDateTime <- FALSE
-        } else if(nchar(j)==16) {
-          dateTimeReg <- grepl("[0-9]{2}\\.[0-9]{2}\\.[0-9]{4} [0-9]{2}:[0-9]{2}", j)
+        } else if(nchar(j)==16 || nchar(j)==19) {
+          dateTimeReg1 <- grepl("[0-9]{2}\\.[0-9]{2}\\.[0-9]{4} [0-9]{2}:[0-9]{2}", j)
+          dateTimeReg2 <- grepl("[0-9]{2}\\.[0-9]{2}\\.[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}", j)
+          dateTimeReg3 <- grepl("[0-9]{4}\\-[0-9]{2}\\-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}", j)
           #print(dateReg)
-          if(!dateTimeReg) {
+          if(!dateTimeReg1 && !dateTimeReg2) {
             isDateTime <- FALSE
           }
         }
@@ -191,7 +193,13 @@ convertDateAndTime <- function(x) {
       #print(isDate)
       if (isDateTime) {
         # Timezone is very important!!
-        dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y %H:%M", tz="Europe/Vienna")
+        if (dateTimeReg1) {
+          dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y %H:%M", tz="Europe/Vienna")
+        } else if(dateTimeReg2) {
+          dframe[,i] <- as.POSIXct(dframe[,i], format="%d.%m.%Y %H:%M:%OS", tz="Europe/Vienna")
+        } else if(dateTimeReg3) {
+          dframe[,i] <- as.POSIXct(dframe[,i], format="%Y-%m-%d %H:%M:%OS", tz="Europe/Vienna")
+        }
         print(paste0(names[i], " wurde in Datum und Uhrzeit umgewandelt"))
       } else {
         print(paste0(names[i], " ist kein Datum + Uhrzeit"))
@@ -256,7 +264,10 @@ removeNAColumns <- function(x) {
 
 #' Spalten mit "echten" Strings aussortieren
 #' @description Damit keine Notizen etc fälschlicherweise als String-Variablen aufgenommen werden (eig sind Strings nur als Factors brauchbar)
-#' @param x entsprechender Datensatz
+#' @param \code{x} entsprechender Datensatz
+#' @return bereinigter Datensatz
+#' @examples
+#' df <- filterStrings(dataframe)
 #' @export
 filterStrings <- function(x) {
   dframe = x

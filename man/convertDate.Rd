@@ -4,7 +4,7 @@
 \alias{convertDate}
 \title{Datum konvertieren}
 \usage{
-convertDate(x)
+convertDate(x, dateformat)
 }
 \arguments{
 \item{x}{entsprechender Datensatz}

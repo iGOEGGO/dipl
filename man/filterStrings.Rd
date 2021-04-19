@@ -7,8 +7,14 @@
 filterStrings(x)
 }
 \arguments{
-\item{x}{entsprechender Datensatz}
+\item{\code{x}}{entsprechender Datensatz}
+}
+\value{
+bereinigter Datensatz
 }
 \description{
 Damit keine Notizen etc fälschlicherweise als String-Variablen aufgenommen werden (eig sind Strings nur als Factors brauchbar)
+}
+\examples{
+df <- filterStrings(dataframe)
 }
