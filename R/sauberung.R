@@ -181,11 +181,12 @@ convertDateAndTime <- function(x) {
         if((nchar(j)<16&&nchar(j)<19)||nchar(j)>19) {
           isDateTime <- FALSE
         } else if(nchar(j)==16 || nchar(j)==19) {
+          print("hier")
           dateTimeReg1 <- grepl("[0-9]{2}\\.[0-9]{2}\\.[0-9]{4} [0-9]{2}:[0-9]{2}", j)
           dateTimeReg2 <- grepl("[0-9]{2}\\.[0-9]{2}\\.[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}", j)
           dateTimeReg3 <- grepl("[0-9]{4}\\-[0-9]{2}\\-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}", j)
           #print(dateReg)
-          if(!dateTimeReg1 && !dateTimeReg2) {
+          if(!dateTimeReg1 && !dateTimeReg2 && !dateTimeReg3) {
             isDateTime <- FALSE
           }
         }
